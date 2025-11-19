@@ -4,7 +4,7 @@
 # Step 0: Install required packages
 !pip install tensorflow keras matplotlib seaborn scikit-learn
 
-# Step 1: Mount Google Drive
+# Step 1: Mount Google Drive (if your dataset is in Drive)
 from google.colab import drive
 drive.mount('/content/drive')
 
@@ -17,27 +17,40 @@ from tensorflow.keras.preprocessing.image import ImageDataGenerator
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Conv2D, MaxPooling2D, Flatten, Dense, Dropout
 from sklearn.metrics import classification_report, confusion_matrix
+import matplotlib.image as mpimg
 
 # Step 3: Set dataset paths
-train_dir = "/content/chest_xray/train"
-val_dir = "/content/chest_xray/val"
-test_dir = "/content/chest_xray/test"
+train_dir = "/content/drive/My Drive/Colab Notebooks/chest_xray/train"
+val_dir = "/content/drive/My Drive/Colab Notebooks/chest_xray/val"
+test_dir = "/content/drive/My Drive/Colab Notebooks/chest_xray/test"
 
 # Step 4: Data exploration
-classes = os.listdir(train_dir)
+# ---- FIXED PART ----
+# Safely load class names using a temporary generator
+temp_gen = ImageDataGenerator().flow_from_directory(
+    train_dir,
+    target_size=(150,150),
+    batch_size=1,
+    class_mode='binary'
+)
+
+classes = list(temp_gen.class_indices.keys())
 print("Classes:", classes)
 
-# Show some sample images
-import matplotlib.image as mpimg
-fig, axes = plt.subplots(2, 5, figsize=(15,6))
+
+
+# Show sample images for each class
+fig, axes = plt.subplots(len(classes), 5, figsize=(15,6))
+
 for i, cls in enumerate(classes):
     cls_dir = os.path.join(train_dir, cls)
     images = os.listdir(cls_dir)[:5]
     for j, img_name in enumerate(images):
         img = mpimg.imread(os.path.join(cls_dir, img_name))
-        axes[j, i].imshow(img, cmap='gray')
-        axes[j, i].axis('off')
-        axes[j, i].set_title(cls)
+        axes[i, j].imshow(img, cmap='gray')
+        axes[i, j].axis('off')
+        axes[i, j].set_title(cls)
+
 plt.tight_layout()
 plt.show()
 
