@@ -34,3 +34,45 @@ Model: "sequential"
  Total params: 4,828,481 (18.42 MB)
  Trainable params: 4,828,481 (18.42 MB)
  Non-trainable params: 0 (0.00 B)
+
+
+
+
+usr/local/lib/python3.12/dist-packages/keras/src/trainers/data_adapters/py_dataset_adapter.py:121: UserWarning: Your `PyDataset` class should call `super().__init__(**kwargs)` in its constructor. `**kwargs` can include `workers`, `use_multiprocessing`, `max_queue_size`. Do not pass these arguments to `fit()`, as they will be ignored.
+  self._warn_if_super_not_called()
+Epoch 1/10
+163/163 ━━━━━━━━━━━━━━━━━━━━ 3379s 21s/step - accuracy: 0.7481 - loss: 0.5722 - val_accuracy: 0.9375 - val_loss: 0.5309
+Epoch 2/10
+163/163 ━━━━━━━━━━━━━━━━━━━━ 87s 533ms/step - accuracy: 0.8725 - loss: 0.3170 - val_accuracy: 0.8125 - val_loss: 0.5589
+Epoch 3/10
+163/163 ━━━━━━━━━━━━━━━━━━━━ 87s 534ms/step - accuracy: 0.8904 - loss: 0.2526 - val_accuracy: 0.9375 - val_loss: 0.4159
+Epoch 4/10
+163/163 ━━━━━━━━━━━━━━━━━━━━ 86s 527ms/step - accuracy: 0.8919 - loss: 0.2411 - val_accuracy: 0.8125 - val_loss: 0.5045
+Epoch 5/10
+163/163 ━━━━━━━━━━━━━━━━━━━━ 87s 533ms/step - accuracy: 0.9101 - loss: 0.2217 - val_accuracy: 0.8750 - val_loss: 0.1934
+Epoch 6/10
+163/163 ━━━━━━━━━━━━━━━━━━━━ 86s 526ms/step - accuracy: 0.9182 - loss: 0.2077 - val_accuracy: 0.8750 - val_loss: 0.3340
+Epoch 7/10
+163/163 ━━━━━━━━━━━━━━━━━━━━ 87s 531ms/step - accuracy: 0.9314 - loss: 0.1747 - val_accuracy: 0.8125 - val_loss: 0.4447
+Epoch 8/10
+163/163 ━━━━━━━━━━━━━━━━━━━━ 86s 527ms/step - accuracy: 0.9304 - loss: 0.1719 - val_accuracy: 0.7500 - val_loss: 0.6963
+Epoch 9/10
+163/163 ━━━━━━━━━━━━━━━━━━━━ 86s 531ms/step - accuracy: 0.9426 - loss: 0.1550 - val_accuracy: 0.8750 - val_loss: 0.2520
+Epoch 10/10
+163/163 ━━━━━━━━━━━━━━━━━━━━ 86s 525ms/step - accuracy: 0.9434 - loss: 0.1521 - val_accuracy: 0.8750 - val_loss: 0.2301
+
+20/20 ━━━━━━━━━━━━━━━━━━━━ 349s 18s/step
+              precision    recall  f1-score   support
+
+      NORMAL       0.92      0.74      0.82       234
+   PNEUMONIA       0.86      0.96      0.91       390
+
+    accuracy                           0.88       624
+   macro avg       0.89      0.85      0.86       624
+weighted avg       0.88      0.88      0.87       624
+
+
+
+
+
+
